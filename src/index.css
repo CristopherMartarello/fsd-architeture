@@ -1,0 +1,14 @@
+@import "tailwindcss";
+
+@theme {
+  --color-synth-base: #1a1a2e;
+  --color-synth-surface: #16213e;
+  --color-synth-accent: #e94560;
+  --color-synth-highlight: #f9ed69;
+  --color-synth-teal: #00adb5;
+}
+
+body {
+  background-color: var(--color-synth-base);
+  color: #ffffff;
+}

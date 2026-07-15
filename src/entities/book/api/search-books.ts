@@ -1,4 +1,4 @@
-import type { Book } from "@/entities/book/model/types";
+import type { Book } from "../model/types";
 import { booksApi } from "@/shared/api";
 
 interface OpenLibrarySearchDoc {

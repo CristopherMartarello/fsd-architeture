@@ -1,4 +1,4 @@
-import { searchBooks } from "@/entities/book/api/search-books";
+import { searchBooks } from "./search-books";
 import { useQuery } from "@tanstack/react-query";
 
 export function useSearchBooks(query: string) {

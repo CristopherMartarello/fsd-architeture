@@ -1,2 +1,2 @@
 export { cn } from "./cn";
-export { buildCoverUrl } from "./build-cover-url";
+export { useDebounce } from "./use-debounce";

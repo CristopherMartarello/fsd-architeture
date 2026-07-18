@@ -1,5 +1,5 @@
 import type { Book } from "../../model/types";
-import { buildCoverUrl } from "@/shared/lib";
+import { buildCoverUrl } from "../../lib/build-cover-url";
 import { Card, CardContent, CardFooter, CardHeader } from "@/shared/ui";
 
 interface BookCardProps {

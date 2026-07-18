@@ -8,3 +8,4 @@ export {
   CardDescription,
   CardContent,
 } from "./card";
+export { Input } from "./input";

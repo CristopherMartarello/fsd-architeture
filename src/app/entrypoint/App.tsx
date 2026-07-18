@@ -1,5 +1,5 @@
-import { QueryProvider } from "@/app/providers";
 import { router } from "@/app/routes";
+import { QueryProvider } from "./query-provider";
 import { RouterProvider } from "react-router-dom";
 
 function App() {

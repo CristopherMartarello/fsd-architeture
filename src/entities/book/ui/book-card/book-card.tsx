@@ -28,9 +28,9 @@ export function BookCard({ book, actionSlot }: BookCardProps) {
         <h3 className="text-paper-ink font-medium leading-tight line-clamp-2">
           {book.title}
         </h3>
-        {book.authorNames.length > 0 && (
+        {book.authors.length > 0 && (
           <p className="text-paper-muted text-sm mt-1 line-clamp-1">
-            {book.authorNames.join(", ")}
+            {book.authors.map((author) => author.name).join(", ")}
           </p>
         )}
         {book.firstPublishYear && (

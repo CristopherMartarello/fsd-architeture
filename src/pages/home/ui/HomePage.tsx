@@ -1,3 +1,4 @@
+import { StatusSelect } from "@/features/change-status";
 import { BookCard } from "@/entities/book";
 import { useSearchBook, SearchInput } from "@/features/search-book";
 
@@ -25,7 +26,11 @@ export function HomePage() {
           </p>
         )}
         {books?.map((book) => (
-          <BookCard key={book.id} book={book} />
+          <BookCard
+            key={book.id}
+            book={book}
+            actionSlot={<StatusSelect bookId={book.id} />}
+          />
         ))}
       </div>
     </div>

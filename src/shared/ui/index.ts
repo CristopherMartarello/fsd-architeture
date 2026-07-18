@@ -9,3 +9,10 @@ export {
   CardContent,
 } from "./card";
 export { Input } from "./input";
+export {
+  Select,
+  SelectContent,
+  SelectItem,
+  SelectTrigger,
+  SelectValue,
+} from "./select";

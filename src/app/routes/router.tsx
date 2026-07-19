@@ -1,27 +1,29 @@
-import { BookPage } from "@/pages/book";
+import { createBrowserRouter, Outlet } from "react-router-dom";
+import { AppHeader } from "@/widgets/app-header";
 import { HomePage } from "@/pages/home";
+import { BookPage } from "@/pages/book";
 import { LibraryPage } from "@/pages/library";
-import { createBrowserRouter } from "react-router-dom";
+
+// eslint-disable-next-line react-refresh/only-export-components
+function RootLayout() {
+  return (
+    <>
+      <AppHeader />
+      <Outlet />
+    </>
+  );
+}
 
 export const router = createBrowserRouter([
   {
     path: "/",
-    element: <HomePage />,
-  },
-  {
-    path: "/book/:id",
-    element: <BookPage />,
-  },
-  {
-    path: "/library",
-    element: <LibraryPage />,
-  },
-  {
-    path: "/compare",
-    element: <div>Compare page</div>,
-  },
-  {
-    path: "/profile",
-    element: <div>Profile page</div>,
+    element: <RootLayout />,
+    children: [
+      { index: true, element: <HomePage /> },
+      { path: "book/:id", element: <BookPage /> },
+      { path: "library", element: <LibraryPage /> },
+      { path: "compare", element: <div>Compare page (em construção)</div> },
+      { path: "profile", element: <div>Profile page (em construção)</div> },
+    ],
   },
 ]);

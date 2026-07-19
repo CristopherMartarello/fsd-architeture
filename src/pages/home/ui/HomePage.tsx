@@ -1,6 +1,7 @@
 import { StatusSelect } from "@/features/change-status";
 import { BookCard } from "@/entities/book";
 import { useSearchBook, SearchInput } from "@/features/search-book";
+import { Link } from "react-router-dom";
 
 export function HomePage() {
   const { query, setQuery, books, isLoading, error } = useSearchBook();
@@ -26,11 +27,14 @@ export function HomePage() {
           </p>
         )}
         {books?.map((book) => (
-          <BookCard
-            key={book.id}
-            book={book}
-            actionSlot={<StatusSelect bookId={book.id} />}
-          />
+          <div key={book.id}>
+            <Link to={`/book/${book.id.replace("/works/", "")}`}>
+              <BookCard book={book} />
+            </Link>
+            <div className="mt-2">
+              <StatusSelect bookId={book.id} />{" "}
+            </div>{" "}
+          </div>
         ))}
       </div>
     </div>

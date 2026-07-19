@@ -1,3 +1,4 @@
+import { BookPage } from "@/pages/book";
 import { HomePage } from "@/pages/home";
 import { createBrowserRouter } from "react-router-dom";
 
@@ -8,7 +9,7 @@ export const router = createBrowserRouter([
   },
   {
     path: "/book/:id",
-    element: <div>Book page</div>,
+    element: <BookPage />,
   },
   {
     path: "/library",

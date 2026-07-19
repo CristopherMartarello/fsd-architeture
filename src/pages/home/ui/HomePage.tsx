@@ -1,5 +1,4 @@
-import { StatusSelect } from "@/features/change-status";
-import { BookCard } from "@/entities/book";
+import { BookGrid } from "@/widgets/book-grid";
 import { useSearchBook, SearchInput } from "@/features/search-book";
 import { Link } from "react-router-dom";
 
@@ -15,30 +14,13 @@ export function HomePage() {
 
       <SearchInput value={query} onChange={setQuery} />
 
-      <div className="grid grid-cols-3 sm:grid-cols-4 md:grid-cols-6 gap-4 mt-6">
-        {isLoading && (
-          <p className="text-paper-muted col-span-full">Carregando...</p>
-        )}
-        {error && (
-          <p className="text-paper-accent col-span-full">
-            Erro ao buscar livros
-          </p>
-        )}
+      <div className="mt-6">
+        {isLoading && <p className="text-paper-muted">Carregando...</p>}
+        {error && <p className="text-paper-accent">Erro ao buscar livros</p>}
         {!query.trim() && (
-          <p className="text-paper-muted col-span-full">
-            Digite algo para começar a busca.
-          </p>
+          <p className="text-paper-muted">Digite algo para começar a busca.</p>
         )}
-        {books?.map((book) => (
-          <div key={book.id}>
-            <Link to={`/book/${book.id.replace("/works/", "")}`}>
-              <BookCard book={book} />
-            </Link>
-            <div className="mt-2">
-              <StatusSelect bookId={book.id} />{" "}
-            </div>{" "}
-          </div>
-        ))}
+        {books && <BookGrid books={books} />}
       </div>
     </div>
   );

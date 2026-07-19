@@ -2,27 +2,32 @@ import { useState } from "react";
 import { Link } from "react-router-dom";
 import {
   useBooks,
-  BookCard,
   READING_STATUSES,
   READING_STATUS_LABELS,
   type ReadingStatus,
+  type Book,
 } from "@/entities/book";
-import { useLibraryEntries, StatusSelect } from "@/features/change-status";
+import { useLibraryEntries } from "@/features/change-status";
+import { BookGrid } from "@/widgets/book-grid";
 
 export function LibraryPage() {
   const entries = useLibraryEntries();
   const results = useBooks(entries.map((e) => e.bookId));
   const [filter, setFilter] = useState<ReadingStatus | "all">("all");
 
-  const books = results
+  const validBooks: { book: Book; status: ReadingStatus }[] = results
     .map((result, index) => ({
       book: result.data,
       status: entries[index].status,
     }))
-    .filter((entry) => Boolean(entry.book));
+    .filter((entry): entry is { book: Book; status: ReadingStatus } =>
+      Boolean(entry.book),
+    );
 
   const filtered =
-    filter === "all" ? books : books.filter((entry) => entry.status === filter);
+    filter === "all"
+      ? validBooks
+      : validBooks.filter((entry) => entry.status === filter);
 
   if (entries.length === 0) {
     return (
@@ -69,18 +74,7 @@ export function LibraryPage() {
         ))}
       </div>
 
-      <div className="grid grid-cols-3 sm:grid-cols-4 md:grid-cols-6 gap-4">
-        {filtered.map(({ book }) => (
-          <div key={book!.id}>
-            <Link to={`/book/${book!.id.replace("/works/", "")}`}>
-              <BookCard book={book!} />
-            </Link>
-            <div className="mt-2">
-              <StatusSelect bookId={book!.id} />
-            </div>
-          </div>
-        ))}
-      </div>
+      <BookGrid books={filtered.map((entry) => entry.book)} />
     </div>
   );
 }

@@ -22,14 +22,17 @@ function mapWorkToBook(work: OpenLibraryWorkResponse, authors: Author[]): Book {
   };
 }
 
+function normalizeWorkId(id: string): string {
+  return id.startsWith("/works/") ? id.replace("/works/", "") : id;
+}
+
 export async function getBook(id: string): Promise<Book> {
   const { data } = await booksApi.get<OpenLibraryWorkResponse>(
-    `/works/${id}.json`,
+    `/works/${normalizeWorkId(id)}.json`,
   );
 
   const authorKeys =
     data.authors?.map((a) => a.author.key.replace("/authors/", "")) ?? [];
-  console.log("authorKeys", authorKeys);
   const authors = await Promise.all(authorKeys.map((key) => getAuthor(key)));
 
   return mapWorkToBook(data, authors);

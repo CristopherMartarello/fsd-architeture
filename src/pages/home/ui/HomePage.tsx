@@ -9,6 +9,9 @@ export function HomePage() {
   return (
     <div className="p-6">
       <h1 className="text-paper-ink text-2xl font-bold mb-4">Book Tracker</h1>
+      <Link to="/library" className="text-paper-accent underline text-sm">
+        Ver minha biblioteca
+      </Link>
 
       <SearchInput value={query} onChange={setQuery} />
 

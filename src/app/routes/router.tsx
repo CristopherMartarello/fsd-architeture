@@ -1,5 +1,6 @@
 import { BookPage } from "@/pages/book";
 import { HomePage } from "@/pages/home";
+import { LibraryPage } from "@/pages/library";
 import { createBrowserRouter } from "react-router-dom";
 
 export const router = createBrowserRouter([
@@ -13,7 +14,7 @@ export const router = createBrowserRouter([
   },
   {
     path: "/library",
-    element: <div>Library page</div>,
+    element: <LibraryPage />,
   },
   {
     path: "/compare",

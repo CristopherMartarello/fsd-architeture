@@ -21,6 +21,7 @@ export function StatusSelect({ bookId }: StatusSelectProps) {
 
   return (
     <Select
+      items={READING_STATUS_LABELS}
       value={status}
       onValueChange={(value) => setStatus(value as ReadingStatus)}
     >

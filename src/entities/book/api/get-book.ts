@@ -2,6 +2,7 @@ import { booksApi } from "@/shared/api";
 import { getAuthor, type Author } from "@/entities/author/@x/book";
 import type { Book } from "../model/types";
 import { normalizeWorkId } from "../lib/normalize-work-id";
+import { toSubject } from "../lib/to-subject";
 
 interface OpenLibraryWorkResponse {
   key: string;
@@ -9,6 +10,7 @@ interface OpenLibraryWorkResponse {
   covers?: number[];
   first_publish_date?: string;
   authors?: { author: { key: string } }[];
+  subjects?: string[];
 }
 
 function mapWorkToBook(work: OpenLibraryWorkResponse, authors: Author[]): Book {
@@ -16,6 +18,7 @@ function mapWorkToBook(work: OpenLibraryWorkResponse, authors: Author[]): Book {
     id: normalizeWorkId(work.key),
     title: work.title,
     authors,
+    subjects: (work.subjects ?? []).map(toSubject),
     coverId: work.covers?.[0] ?? null,
     firstPublishYear: work.first_publish_date
       ? Number.parseInt(work.first_publish_date, 10) || null

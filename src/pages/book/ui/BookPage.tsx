@@ -32,6 +32,18 @@ export function BookPage() {
             {book.firstPublishYear}
           </p>
         )}
+        {book.subjects.length > 0 && (
+          <div className="flex flex-wrap gap-1.5 mt-3">
+            {book.subjects.slice(0, 8).map((subject) => (
+              <span
+                key={subject.id}
+                className="text-xs px-2 py-0.5 rounded-full bg-paper-surface border border-paper-muted/30 text-paper-muted"
+              >
+                {subject.name}
+              </span>
+            ))}
+          </div>
+        )}
 
         <div className="mt-4 max-w-xs">
           <StatusSelect bookId={book.id} />

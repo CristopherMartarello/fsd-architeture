@@ -1,3 +1,4 @@
+import { BookOpen } from "lucide-react";
 import { NavLink } from "react-router-dom";
 
 const links = [
@@ -7,8 +8,12 @@ const links = [
 
 export function AppHeader() {
   return (
-    <header className="border-b border-paper-muted/20 bg-paper-surface">
-      <nav className="flex gap-6 px-6 py-4">
+    <header className="flex items-center justify-between px-6 py-4 border-b border-paper-muted/20 bg-paper-muted/50">
+      <div className="flex items-center gap-2 mr-4">
+        <BookOpen />
+        <span className="text-lg font-bold text-paper-ink">Book Tracker</span>
+      </div>
+      <nav className="flex gap-6">
         {links.map((link) => (
           <NavLink
             key={link.to}
@@ -16,7 +21,9 @@ export function AppHeader() {
             end={link.to === "/"}
             className={({ isActive }) =>
               `text-sm font-medium ${
-                isActive ? "text-paper-accent" : "text-paper-ink/70"
+                isActive
+                  ? "text-paper-accent border-b-2 border-b-paper-accent"
+                  : "text-paper-ink/70"
               }`
             }
           >

@@ -1,6 +1,7 @@
 import { useParams } from "react-router-dom";
 import { useBook, buildCoverUrl } from "@/entities/book";
 import { StatusSelect } from "@/features/change-status";
+import { RatingStars } from "@/features/rate-book";
 
 export function BookPage() {
   const { id } = useParams<{ id: string }>();
@@ -34,6 +35,9 @@ export function BookPage() {
 
         <div className="mt-4 max-w-xs">
           <StatusSelect bookId={book.id} />
+        </div>
+        <div className="mt-2">
+          <RatingStars bookId={book.id} />
         </div>
       </div>
     </div>

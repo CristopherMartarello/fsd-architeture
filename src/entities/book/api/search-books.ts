@@ -1,6 +1,7 @@
 import type { Author } from "@/entities/author/@x/book";
 import { booksApi } from "@/shared/api";
 import type { Book } from "../model/types";
+import { normalizeWorkId } from "../lib/normalize-work-id";
 
 interface OpenLibrarySearchDoc {
   key: string;
@@ -22,7 +23,7 @@ function mapToBook(doc: OpenLibrarySearchDoc): Book {
   }));
 
   return {
-    id: doc.key,
+    id: normalizeWorkId(doc.key),
     title: doc.title,
     authors,
     coverId: doc.cover_i ?? null,

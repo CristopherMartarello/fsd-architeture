@@ -1,6 +1,7 @@
 import { booksApi } from "@/shared/api";
 import { getAuthor, type Author } from "@/entities/author/@x/book";
 import type { Book } from "../model/types";
+import { normalizeWorkId } from "../lib/normalize-work-id";
 
 interface OpenLibraryWorkResponse {
   key: string;
@@ -12,7 +13,7 @@ interface OpenLibraryWorkResponse {
 
 function mapWorkToBook(work: OpenLibraryWorkResponse, authors: Author[]): Book {
   return {
-    id: work.key,
+    id: normalizeWorkId(work.key),
     title: work.title,
     authors,
     coverId: work.covers?.[0] ?? null,
@@ -22,17 +23,12 @@ function mapWorkToBook(work: OpenLibraryWorkResponse, authors: Author[]): Book {
   };
 }
 
-function normalizeWorkId(id: string): string {
-  return id.startsWith("/works/") ? id.replace("/works/", "") : id;
-}
-
 export async function getBook(id: string): Promise<Book> {
   const { data } = await booksApi.get<OpenLibraryWorkResponse>(
-    `/works/${normalizeWorkId(id)}.json`,
+    `/works/${id}.json`,
   );
 
-  const authorKeys =
-    data.authors?.map((a) => a.author.key.replace("/authors/", "")) ?? [];
+  const authorKeys = data.authors?.map((a) => a.author.key) ?? [];
   const authors = await Promise.all(authorKeys.map((key) => getAuthor(key)));
 
   return mapWorkToBook(data, authors);

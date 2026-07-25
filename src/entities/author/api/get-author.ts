@@ -1,5 +1,6 @@
 import { booksApi } from "@/shared/api";
 import type { Author } from "../model/types";
+import { normalizeAuthorKey } from "../lib/normalize-author-key";
 
 interface OpenLibraryAuthorResponse {
   key: string;
@@ -8,7 +9,7 @@ interface OpenLibraryAuthorResponse {
 
 export async function getAuthor(key: string): Promise<Author> {
   const { data } = await booksApi.get<OpenLibraryAuthorResponse>(
-    `/authors/${key}.json`,
+    `/authors/${normalizeAuthorKey(key)}.json`,
   );
-  return { id: data.key, name: data.name };
+  return { id: normalizeAuthorKey(data.key), name: data.name };
 }

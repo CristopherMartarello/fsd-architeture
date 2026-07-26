@@ -8,6 +8,8 @@ export interface Subject {
 export interface Book {
   id: string;
   title: string;
+  subtitle: string | null;
+  description: string | null;
   authors: Author[];
   subjects: Subject[];
   coverId: number | null;

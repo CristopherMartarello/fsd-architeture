@@ -7,16 +7,33 @@ import { toSubject } from "../lib/to-subject";
 interface OpenLibraryWorkResponse {
   key: string;
   title: string;
+  subtitle?: string;
+  description?: string | { type: string; value: string };
+  excerpts?: { excerpt: string }[];
+  first_sentence?: { type: string; value: string };
   covers?: number[];
   first_publish_date?: string;
   authors?: { author: { key: string } }[];
   subjects?: string[];
 }
 
+function toDescription(work: OpenLibraryWorkResponse): string | null {
+  if (work.description) {
+    return typeof work.description === "string"
+      ? work.description
+      : work.description.value;
+  }
+  if (work.excerpts?.[0]?.excerpt) return work.excerpts[0].excerpt;
+  if (work.first_sentence?.value) return work.first_sentence.value;
+  return null;
+}
+
 function mapWorkToBook(work: OpenLibraryWorkResponse, authors: Author[]): Book {
   return {
     id: normalizeWorkId(work.key),
     title: work.title,
+    subtitle: work.subtitle ?? null,
+    description: toDescription(work),
     authors,
     subjects: (work.subjects ?? []).map(toSubject),
     coverId: work.covers?.[0] ?? null,

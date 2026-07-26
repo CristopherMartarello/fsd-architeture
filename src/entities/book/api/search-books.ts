@@ -27,6 +27,8 @@ function mapToBook(doc: OpenLibrarySearchDoc): Book {
   return {
     id: normalizeWorkId(doc.key),
     title: doc.title,
+    subtitle: null,
+    description: null,
     authors,
     subjects: (doc.subject ?? []).map(toSubject),
     coverId: doc.cover_i ?? null,

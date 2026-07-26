@@ -22,6 +22,9 @@ export function BookPage() {
       )}
       <div className="flex-1">
         <h1 className="text-paper-ink text-2xl font-bold">{book.title}</h1>
+        {book.subtitle && (
+          <p className="text-paper-muted text-lg">{book.subtitle}</p>
+        )}
         {book.authors.length > 0 && (
           <p className="text-paper-muted mt-1">
             {book.authors.map((author) => author.name).join(", ")}
@@ -51,6 +54,15 @@ export function BookPage() {
         <div className="mt-2">
           <RatingStars bookId={book.id} />
         </div>
+
+        {book.description && (
+          <div className="mt-6">
+            <h2 className="text-paper-ink font-semibold mb-1">Sinopse</h2>
+            <p className="text-paper-muted text-sm whitespace-pre-line">
+              {book.description}
+            </p>
+          </div>
+        )}
       </div>
     </div>
   );

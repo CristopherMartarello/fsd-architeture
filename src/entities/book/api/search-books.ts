@@ -36,11 +36,14 @@ function mapToBook(doc: OpenLibrarySearchDoc): Book {
   };
 }
 
-export async function searchBooks(query: string): Promise<Book[]> {
+export async function searchBooks(
+  query: string,
+  limit = 24,
+): Promise<Book[]> {
   const { data } = await booksApi.get<OpenLibrarySearchResponse>(
     "/search.json",
     {
-      params: { q: query },
+      params: { q: query, limit },
     },
   );
 

@@ -16,15 +16,15 @@ export function RatingStars({ bookId }: RatingStarsProps) {
           key={value}
           type="button"
           onClick={() => setRating(value)}
-          className="p-0.5"
+          className="p-0.5 cursor-pointer"
           aria-label={`Avaliar com ${value} estrela${value > 1 ? "s" : ""}`}
         >
           <Star
             size={16}
             className={
               value <= rating
-                ? "fill-paper-accent text-paper-accent"
-                : "text-paper-muted"
+                ? "fill-yellow-500 text-yellow-500"
+                : "text-yellow-500"
             }
           />
         </button>

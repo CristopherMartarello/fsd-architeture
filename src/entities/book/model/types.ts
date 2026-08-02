@@ -15,3 +15,14 @@ export interface Book {
   coverId: number | null;
   firstPublishYear: number | null;
 }
+
+export interface CommunityRating {
+  average: number | null;
+  count: number;
+}
+
+export interface CommunityBookshelves {
+  wantToRead: number;
+  currentlyReading: number;
+  alreadyRead: number;
+}

@@ -1,5 +1,10 @@
 import { useParams } from "react-router-dom";
-import { useBook, buildCoverUrl } from "@/entities/book";
+import {
+  useBook,
+  buildCoverUrl,
+  CommunityRatingBadge,
+  CommunityBookshelvesBadge,
+} from "@/entities/book";
 import { StatusSelect } from "@/features/change-status";
 import { RatingStars } from "@/features/rate-book";
 
@@ -50,9 +55,11 @@ export function BookPage() {
 
         <div className="mt-4 max-w-xs">
           <StatusSelect bookId={book.id} />
+          <CommunityBookshelvesBadge bookId={book.id} />
         </div>
-        <div className="mt-2">
+        <div className="mt-2 flex items-center gap-3">
           <RatingStars bookId={book.id} />
+          <CommunityRatingBadge bookId={book.id} />
         </div>
 
         {book.description && (

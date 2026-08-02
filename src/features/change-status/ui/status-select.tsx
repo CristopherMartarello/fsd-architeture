@@ -25,12 +25,12 @@ export function StatusSelect({ bookId }: StatusSelectProps) {
       value={status}
       onValueChange={(value) => setStatus(value as ReadingStatus)}
     >
-      <SelectTrigger className="w-full bg-paper-surface border-paper-muted/30 text-paper-ink">
+      <SelectTrigger className="w-full cursor-pointer bg-paper-surface border-paper-muted/30 text-paper-ink">
         <SelectValue placeholder="Adicionar à biblioteca" />
       </SelectTrigger>
       <SelectContent>
         {READING_STATUSES.map((s) => (
-          <SelectItem key={s} value={s}>
+          <SelectItem key={s} value={s} className="cursor-pointer">
             {READING_STATUS_LABELS[s]}
           </SelectItem>
         ))}

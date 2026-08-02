@@ -1,1 +1,1 @@
-export { LibraryPage } from "./ui/LibraryPage";
+export { LibraryPage } from "./ui/library-page";

@@ -1,5 +1,5 @@
-import type { Book } from "../../model/types";
-import { buildCoverUrl } from "../../lib/build-cover-url";
+import type { Book } from "../model/types";
+import { buildCoverUrl } from "../lib/build-cover-url";
 import { Card, CardContent, CardFooter, CardHeader } from "@/shared/ui";
 
 interface BookCardProps {
@@ -9,13 +9,13 @@ interface BookCardProps {
 
 export function BookCard({ book, actionSlot }: BookCardProps) {
   return (
-    <Card className="border-paper-muted/20 bg-paper-surface overflow-hidden hover:cursor-pointer">
+    <Card className="border-paper-muted/20 bg-paper-surface overflow-hidden hover:cursor-pointer pt-0">
       <CardHeader className="p-0">
         {book.coverId ? (
           <img
             src={buildCoverUrl(book.coverId, "L")}
             alt={book.title}
-            className="aspect-2/3 w-full object-contain"
+            className="aspect-2/3 w-full"
           />
         ) : (
           <div className="aspect-2/3 w-full bg-paper-base flex items-center justify-center text-paper-ink/50 text-sm">
@@ -40,7 +40,7 @@ export function BookCard({ book, actionSlot }: BookCardProps) {
         )}
       </CardContent>
 
-      {actionSlot && <CardFooter className="p-3 pt-0">{actionSlot}</CardFooter>}
+      {actionSlot && <CardFooter className="p-3">{actionSlot}</CardFooter>}
     </Card>
   );
 }

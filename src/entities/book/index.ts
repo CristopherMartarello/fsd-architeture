@@ -11,6 +11,8 @@ export { useBook } from "./api/use-book";
 export { useBooks } from "./api/use-books";
 export { useBookRatings } from "./api/use-book-ratings";
 export { useBookBookshelves } from "./api/use-book-bookshelves";
+export { useTrendingBooks } from "./api/use-trending-books";
+export type { TrendingPeriod } from "./api/get-trending-books";
 export { BookCard } from "./ui/book-card";
 export { CommunityRatingBadge } from "./ui/community-rating-badge";
 export { CommunityBookshelvesBadge } from "./ui/community-bookshelves-badge";

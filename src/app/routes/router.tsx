@@ -22,8 +22,6 @@ export const router = createBrowserRouter([
       { index: true, element: <HomePage /> },
       { path: "book/:id", element: <BookPage /> },
       { path: "library", element: <LibraryPage /> },
-      { path: "compare", element: <div>Compare page (em construção)</div> },
-      { path: "profile", element: <div>Profile page (em construção)</div> },
     ],
   },
 ]);

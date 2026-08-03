@@ -9,6 +9,7 @@ import {
 } from "@/entities/book";
 import { useLibraryEntries } from "@/features/change-status";
 import { BookGrid } from "@/widgets/book-grid";
+import { Statistics } from "@/widgets/statistics";
 
 export function LibraryPage() {
   const entries = useLibraryEntries();
@@ -44,14 +45,18 @@ export function LibraryPage() {
 
   return (
     <div className="p-6">
-      <h1 className="text-paper-ink text-2xl font-bold mb-4">
+      <h2 className="text-paper-ink text-xl font-bold mb-4">
         Minha Biblioteca
-      </h1>
+      </h2>
+
+      <div className="mb-6">
+        <Statistics />
+      </div>
 
       <div className="flex gap-2 mb-6 flex-wrap">
         <button
           onClick={() => setFilter("all")}
-          className={`px-3 py-1 rounded text-sm border ${
+          className={`px-3 py-1 rounded text-sm border cursor-pointer ${
             filter === "all"
               ? "bg-paper-accent text-white border-paper-accent"
               : "bg-paper-surface text-paper-ink border-paper-muted/30"
@@ -63,7 +68,7 @@ export function LibraryPage() {
           <button
             key={status}
             onClick={() => setFilter(status)}
-            className={`px-3 py-1 rounded text-sm border ${
+            className={`px-3 py-1 rounded text-sm border cursor-pointer ${
               filter === status
                 ? "bg-paper-accent text-white border-paper-accent"
                 : "bg-paper-surface text-paper-ink border-paper-muted/30"

@@ -6,11 +6,11 @@
 @custom-variant dark (&:is(.dark *));
 
 @theme {
-  --color-paper-base: #f2e9d8;
-  --color-paper-surface: #ffffff;
-  --color-paper-accent: #b5502e;
-  --color-paper-ink: #2c2620;
-  --color-paper-muted: #9a8352;
+  --color-paper-base: #f4efe4;
+  --color-paper-surface: #fffdf8;
+  --color-paper-accent: #2f6b4f;
+  --color-paper-ink: #22271f;
+  --color-paper-muted: #7c7a63;
 }
 
 body {

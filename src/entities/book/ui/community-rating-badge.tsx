@@ -12,7 +12,7 @@ export function CommunityRatingBadge({ bookId }: CommunityRatingBadgeProps) {
 
   return (
     <p className="flex items-center gap-1 text-paper-muted text-sm">
-      <Star size={14} className="fill-paper-accent text-paper-accent" />
+      <Star size={14} className="fill-yellow-500 text-yellow-500" />
       {rating.average?.toFixed(1)}{" "}
       <span className="text-paper-muted/70">
         ({rating.count} avaliaç{rating.count === 1 ? "ão" : "ões"} da

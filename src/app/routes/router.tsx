@@ -3,6 +3,7 @@ import { AppHeader } from "@/widgets/app-header";
 import { HomePage } from "@/pages/home";
 import { BookPage } from "@/pages/book";
 import { LibraryPage } from "@/pages/library";
+import { AuthorPage } from "@/pages/author";
 
 // eslint-disable-next-line react-refresh/only-export-components
 function RootLayout() {
@@ -21,6 +22,7 @@ export const router = createBrowserRouter([
     children: [
       { index: true, element: <HomePage /> },
       { path: "book/:id", element: <BookPage /> },
+      { path: "author/:id", element: <AuthorPage /> },
       { path: "library", element: <LibraryPage /> },
     ],
   },

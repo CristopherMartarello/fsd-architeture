@@ -3,9 +3,6 @@ import type { Book } from "../model/types";
 import { normalizeWorkId } from "./normalize-work-id";
 import { toSubject } from "./to-subject";
 
-// Shape compartilhado pelos "docs" da busca (/search.json) e pelos "works" do
-// trending (/trending/{period}.json) — a Open Library devolve o mesmo formato
-// de work resumido nos dois endpoints, só muda a chave do wrapper.
 export interface OpenLibraryDoc {
   key: string;
   title: string;

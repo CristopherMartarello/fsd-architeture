@@ -1,4 +1,4 @@
-import { useParams } from "react-router-dom";
+import { useParams, Link } from "react-router-dom";
 import {
   useBook,
   buildCoverUrl,
@@ -32,7 +32,17 @@ export function BookPage() {
         )}
         {book.authors.length > 0 && (
           <p className="text-paper-muted mt-1">
-            {book.authors.map((author) => author.name).join(", ")}
+            {book.authors.map((author, index) => (
+              <span key={author.id}>
+                {index > 0 && ", "}
+                <Link
+                  to={`/author/${author.id}`}
+                  className="underline hover:text-paper-accent"
+                >
+                  {author.name}
+                </Link>
+              </span>
+            ))}
           </p>
         )}
         {book.firstPublishYear && (

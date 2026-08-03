@@ -13,6 +13,7 @@ export { useBookRatings } from "./api/use-book-ratings";
 export { useBookBookshelves } from "./api/use-book-bookshelves";
 export { useTrendingBooks } from "./api/use-trending-books";
 export type { TrendingPeriod } from "./api/get-trending-books";
+export { useBooksByAuthor } from "./api/use-books-by-author";
 export { BookCard } from "./ui/book-card";
 export { CommunityRatingBadge } from "./ui/community-rating-badge";
 export { CommunityBookshelvesBadge } from "./ui/community-bookshelves-badge";

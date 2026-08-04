@@ -7,6 +7,7 @@ import {
 } from "@/entities/book";
 import { StatusSelect } from "@/features/change-status";
 import { RatingStars } from "@/features/rate-book";
+import { ReviewList } from "@/features/write-review";
 
 export function BookPage() {
   const { id } = useParams<{ id: string }>();
@@ -17,8 +18,9 @@ export function BookPage() {
     return <div className="p-6 text-paper-accent">Livro não encontrado</div>;
 
   return (
-    <div className="p-6 flex gap-6">
-      {book.coverId && (
+    <div className="p-6">
+      <div className="flex gap-6">
+        {book.coverId && (
         <img
           src={buildCoverUrl(book.coverId, "L")}
           alt={book.title}
@@ -80,7 +82,13 @@ export function BookPage() {
             </p>
           </div>
         )}
+        </div>
       </div>
+
+      <section className="mt-8 max-w-2xl">
+        <h2 className="text-paper-ink font-semibold mb-3">Comentários</h2>
+        <ReviewList bookId={book.id} />
+      </section>
     </div>
   );
 }

@@ -15,7 +15,7 @@ export function HomePage() {
   const hasQuery = query.trim().length > 0;
 
   return (
-    <div className="p-6 flex flex-col gap-8">
+    <div className="max-w-7xl mx-auto pt-6 flex flex-col gap-8">
       <SearchInput
         value={query}
         onChange={setQuery}

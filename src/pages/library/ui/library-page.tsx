@@ -44,7 +44,7 @@ export function LibraryPage() {
   }
 
   return (
-    <div className="p-6">
+    <div className="max-w-7xl mx-auto py-6">
       <h2 className="text-paper-ink text-xl font-bold mb-4">
         Minha Biblioteca
       </h2>

@@ -16,7 +16,7 @@ export function BookGrid({ books }: BookGridProps) {
             book={book}
             actionSlot={
               <div
-                className="flex flex-1 items-center justify-between gap-2"
+                className="flex flex-col gap-2"
                 onClick={(e) => {
                   e.preventDefault();
                   e.stopPropagation();

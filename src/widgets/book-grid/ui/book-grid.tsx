@@ -11,7 +11,7 @@ export function BookGrid({ books }: BookGridProps) {
   return (
     <div className="grid grid-cols-3 sm:grid-cols-4 md:grid-cols-6 gap-4">
       {books.map((book) => (
-        <Link key={book.id} to={`/book/${book.id}`}>
+        <Link key={book.id} to={`/book/${book.id}`} className="h-full">
           <BookCard
             book={book}
             actionSlot={

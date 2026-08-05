@@ -21,7 +21,7 @@ export function PopularBooks({ books, isLoading, error }: PopularBooksProps) {
       <h2 className="text-paper-ink text-xl font-bold mb-4">Em alta hoje</h2>
       <div className="grid grid-cols-3 sm:grid-cols-4 md:grid-cols-6 gap-4">
         {books.map((book) => (
-          <Link key={book.id} to={`/book/${book.id}`}>
+          <Link key={book.id} to={`/book/${book.id}`} className="h-full">
             <BookCard
               book={book}
               actionSlot={

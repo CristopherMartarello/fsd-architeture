@@ -9,13 +9,13 @@ interface BookCardProps {
 
 export function BookCard({ book, actionSlot }: BookCardProps) {
   return (
-    <Card className="border-paper-muted/20 bg-paper-surface overflow-hidden hover:cursor-pointer pt-0">
+    <Card className="h-full flex flex-col border-paper-muted/20 bg-paper-surface overflow-hidden hover:cursor-pointer pt-0">
       <CardHeader className="p-0">
         {book.coverId ? (
           <img
             src={buildCoverUrl(book.coverId, "L")}
             alt={book.title}
-            className="aspect-2/3 w-full"
+            className="aspect-2/3 w-full object-cover"
           />
         ) : (
           <div className="aspect-2/3 w-full bg-paper-base flex items-center justify-center text-paper-ink/50 text-sm">
@@ -24,7 +24,7 @@ export function BookCard({ book, actionSlot }: BookCardProps) {
         )}
       </CardHeader>
 
-      <CardContent className="p-3">
+      <CardContent className="p-3 flex-1">
         <h3 className="text-paper-ink font-medium leading-tight line-clamp-2">
           {book.title}
         </h3>
